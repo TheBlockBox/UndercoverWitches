@@ -22,7 +22,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.Random;
 
-// TODO: Icon
 @Mod("undercoverwitches")
 public class UndercoverWitches {
     public UndercoverWitches() {

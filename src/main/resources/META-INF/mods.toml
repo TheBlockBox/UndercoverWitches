@@ -25,11 +25,11 @@ updateJSONURL = "https://raw.githubusercontent.com/TheBlockBox/UndercoverWitches
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL = "https://minecraft.curseforge.com/projects/undercoverwitches" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile = "undercoverwitches.png" #optional
+logoFile = "logo.png" #optional
 # A text field displayed in the mod UI
-credits = "Code by RedstoneTim, assets by RebelT" #optional
+credits = "Code by RedstoneTim, logo by RebelT" #optional
 # A text field displayed in the mod UI
-authors = "RedstoneTim (code, ideas), RebelT (assets, ideas)" #optional
+authors = "RedstoneTim (code, ideas), RebelT (logo, ideas)" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description = '''
 A minecraft mod which revolves around witches in undercover.
@@ -54,4 +54,4 @@ modId = "minecraft"
 mandatory = true
 versionRange = "[1.16.3]"
 ordering = "NONE"
-side = "SERVER"
+side = "BOTH"
