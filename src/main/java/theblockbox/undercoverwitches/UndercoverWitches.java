@@ -17,6 +17,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -24,6 +25,7 @@ import java.util.Random;
 
 @Mod("undercoverwitches")
 public class UndercoverWitches {
+
     public UndercoverWitches() {
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -33,10 +35,19 @@ public class UndercoverWitches {
         // add goal to transform into witch in the morning
         // with higher priority so we don't have to remove the standard gift goal
         cat.goalSelector.addGoal(1, new MorningWitchGiftGoal(cat));
+        cat.addTag("undercover_witch");
     }
 
     @SubscribeEvent
     public void onEntityJoinWorld(EntityJoinWorldEvent event) {
+        // Add the goal to all entities that are already undercover witches
+        if ((event.getEntity() instanceof CatEntity) && (event.getEntity().getTags().contains("undercover_witch"))) {
+            convertCatToWitch((CatEntity) event.getEntity());
+        }
+    }
+
+    @SubscribeEvent
+    public void onEntitySpawn(LivingSpawnEvent.SpecialSpawn event) {
         // Make 16.7% of black cats witch cats
         Entity entity = event.getEntity();
         if ((entity instanceof CatEntity) && (((CatEntity) entity).getCatType() == 10) && (((CatEntity) entity).getRNG().nextInt(6) == 0)) {
